@@ -1,0 +1,77 @@
+Fitur-fitur:
+- Super Admin dapat melihat seluruh data yang ada.
+- Super Admin dapat menambahkan user admin untuk setiap bioskop
+- Super Admin dapat melihat, menambahkan, mengedit, delete : film 
+- Super Admin dapat melihat, menambahkan, mengedit, delete : gedung_bioskop
+- Super Admin Bioskop datpat melihat data penjualan untuk seluruh bioskop
+- Admin Bioskop dapat melihat, menambahkan, mengedit, delete : teater_bioskop 
+- Admin Bioskop dapat melihat, menambahkan, mengedit, delete : penayangan
+- Admin Bioskop dapat melihat, menambahkan, mengedit, delete : lokal-user
+- Admin Bioskop dapat melihat data penjualan untuk bioskop tersebut
+- Admin Bioskop dapat menambahkan user untuk bioskop itu sendiri
+
+
+Halaman-halaman :
+1. Home      	(Public) : /
+2. Film      	(Public) : /{namaFilm}
+3. Login        (Public) : /login
+4. Regsiter     (Public) : /register
+5. Booking Seat (Logged) : /booking-seat/
+6. Pesan Tiket  (Logged) : /pesan-tiket/
+
+7.   List User 	   	(SuperAdmin) : /super-admin/users (CRUD)
+8.   List Film 	   	(SuperAdmin) : /super-admin/films (CRUD)
+9.   List Bioskop       (SuperAdmin) : /super-admin/list-bioskop (CRUD)
+10.  List Penanyangan	(SuperAdmin) : /super-admin/penayangan (ViewOnly)
+11.  List Penjualan     (SuperAdmin) : /super-admin/penjualan (ViewOnly)
+12.  Laporan Penjualan	(SuperAdmin) : /super-admin/laporan (ViewOnly)
+
+13.  List User 	   	(AdminBioskop) : /admin-{namaBioskop}/users (CRUD)
+14.  List Teater	(AdminBioskop) : /admin-{namaBioskop}/teater-room (CRUD)
+16.  List Penanyangan   (AdminBioskop) : /admin-{namaBioskop}/penayangan (CRUD)
+17.  List Penjualan     (AdminBioskop) : /admin-{namaBioskop}/penjualan (ViewOnly)
+18.  Laporan Penjualan	(AdminBioskop) : /admin-{namaBioskop}/laporan (ViewOnly)
+
+Database:
+
+User : 
+- id
+- email
+- password
+- roles
+
+Film :
+- id
+- judul_film
+- durasi_film
+- deskripsi
+- status
+
+Gedung_Bioskop:
+- id
+- nama_bioskop
+- lokasi_bioskop
+
+Teater_Bioskop :
+- id
+- nama_teater
+- id_bioskop
+- list_kursi
+- kapasitas
+- status
+
+Penayangan: 
+- id
+- nama_film
+- waktu_tayang
+- no_bioskop
+- no_teater
+- harga_tiket
+- status
+
+Penjualan :
+- id
+- no_user
+- no_penayangan
+- jumlah_kursi
+- total_harga
