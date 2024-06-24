@@ -10,8 +10,5 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div>
-        <h2>Tailwind Page</h2>
-    </div>
 </body>
 </html>
