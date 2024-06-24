@@ -1,9 +1,9 @@
-Fitur-fitur:
+ Fitur-fitur:
 - Super Admin dapat melihat seluruh data yang ada.
 - Super Admin dapat menambahkan user admin untuk setiap bioskop
 - Super Admin dapat melihat, menambahkan, mengedit, delete : film 
 - Super Admin dapat melihat, menambahkan, mengedit, delete : gedung_bioskop
-- Super Admin Bioskop datpat melihat data penjualan untuk seluruh bioskop
+- Super Admin Bioskop dapat melihat data penjualan untuk seluruh bioskop
 - Admin Bioskop dapat melihat, menambahkan, mengedit, delete : teater_bioskop 
 - Admin Bioskop dapat melihat, menambahkan, mengedit, delete : penayangan
 - Admin Bioskop dapat melihat, menambahkan, mengedit, delete : lokal-user
@@ -19,18 +19,22 @@ Halaman-halaman :
 5. Booking Seat (Logged) : /booking-seat/
 6. Pesan Tiket  (Logged) : /pesan-tiket/
 
-7.   List User 	   	(SuperAdmin) : /super-admin/users (CRUD)
-8.   List Film 	   	(SuperAdmin) : /super-admin/films (CRUD)
-9.   List Bioskop       (SuperAdmin) : /super-admin/list-bioskop (CRUD)
-10.  List Penanyangan	(SuperAdmin) : /super-admin/penayangan (ViewOnly)
-11.  List Penjualan     (SuperAdmin) : /super-admin/penjualan (ViewOnly)
-12.  Laporan Penjualan	(SuperAdmin) : /super-admin/laporan (ViewOnly)
+7.   List User 	   	(SuperAdmin) : /super-admin/users (CRUD) - user
+8.   List Film 	   	(SuperAdmin) : /super-admin/films (CRUD) - film
+9.   List Bioskop       (SuperAdmin) : /super-admin/list-bioskop (CRUD) - bioskop
 
-13.  List User 	   	(AdminBioskop) : /admin-{namaBioskop}/users (CRUD)
-14.  List Teater	(AdminBioskop) : /admin-{namaBioskop}/teater-room (CRUD)
-16.  List Penanyangan   (AdminBioskop) : /admin-{namaBioskop}/penayangan (CRUD)
-17.  List Penjualan     (AdminBioskop) : /admin-{namaBioskop}/penjualan (ViewOnly)
-18.  Laporan Penjualan	(AdminBioskop) : /admin-{namaBioskop}/laporan (ViewOnly)
+10.  List Penanyangan	(SuperAdmin) : /super-admin/penayangan (ViewOnly) - penayangan
+11.  List Penjualan     (SuperAdmin) : /super-admin/penjualan (ViewOnly) - penjualan
+12.  Laporan Penjualan	(SuperAdmin) : /super-admin/laporan (ViewOnly) - laporan
+
+13.  List Teater	(ManagerBioskop) : /{namaBioskop}/teater-room (CRUD) - teater
+14.  List Penanyangan   (ManagerBioskop) : /{namaBioskop}/penayangan (CRUD) - penayangan
+
+15.  List Film 	   	(ManagerBioskop) : /{namaBioskop}/films (ViewOnly) - film
+16.  List Penjualan     (ManagerBioskop) : /{namaBioskop}/penjualan (ViewOnly) - penjualan
+17.  Laporan Penjualan	(ManagerBioskop) : /{namaBioskop}/laporan (ViewOnly) - laporan
+
+TOTAL HALAMAN APROX = 14
 
 Database:
 
@@ -45,12 +49,12 @@ Film :
 - judul_film
 - durasi_film
 - deskripsi
-- status
 
 Gedung_Bioskop:
 - id
 - nama_bioskop
 - lokasi_bioskop
+- jumlah_teater
 
 Teater_Bioskop :
 - id
@@ -71,7 +75,7 @@ Penayangan:
 
 Penjualan :
 - id
-- no_user
+- user
 - no_penayangan
 - jumlah_kursi
 - total_harga
