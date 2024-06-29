@@ -10,4 +10,5 @@ class LoginController extends Controller
     {
         return view('Public.login');
     }
+    
 }
