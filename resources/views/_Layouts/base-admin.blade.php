@@ -72,18 +72,7 @@
         </aside>
         <div class="ml-56 px-8 py-7">
             @yield('content')
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, veniam sunt. Harum dolorem inventore debitis amet quia optio voluptatum dolor. Sapiente molestias quidem laborum aut voluptates, rerum eveniet ex vitae!</p>
+           
         </div>
     </div>
 
