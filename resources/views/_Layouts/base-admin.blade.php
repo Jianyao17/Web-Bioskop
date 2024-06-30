@@ -72,7 +72,6 @@
         </aside>
         <div class="ml-56 px-8 py-7">
             @yield('content')
-           
         </div>
     </div>
 

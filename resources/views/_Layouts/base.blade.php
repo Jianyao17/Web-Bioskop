@@ -13,7 +13,7 @@
 
 <body class="font-roboto pt-16 bg-neutral-900">
     {{-- Navbar --}}
-    <nav class="bg-emerald-800 text-gray-200 backdrop-blur-md z-20
+    <nav class="bg-emerald-800 text-gray-200 z-20 h-16
                 border-emerald-800 border-b-2 top-0 fixed w-full">
         <div class="max-w-screen mx-auto flex justify-between">
             <a href="/" class="flex flex-row items-center gap-2 p-4">

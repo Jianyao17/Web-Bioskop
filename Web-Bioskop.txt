@@ -47,6 +47,7 @@ User :
 Film :
 - id
 - judul_film
+- rating_umur
 - durasi_film
 - deskripsi
 
