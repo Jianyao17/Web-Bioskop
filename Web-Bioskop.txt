@@ -24,17 +24,16 @@ Halaman-halaman :
 9.   List Bioskop       (SuperAdmin) : /super-admin/list-bioskop (CRUD) - bioskop
 
 10.  List Penanyangan	(SuperAdmin) : /super-admin/penayangan (ViewOnly) - penayangan
-11.  List Penjualan     (SuperAdmin) : /super-admin/penjualan (ViewOnly) - penjualan
 12.  Laporan Penjualan	(SuperAdmin) : /super-admin/laporan (ViewOnly) - laporan
 
 13.  List Teater	(ManagerBioskop) : /{namaBioskop}/teater-room (CRUD) - teater
 14.  List Penanyangan   (ManagerBioskop) : /{namaBioskop}/penayangan (CRUD) - penayangan
 
 15.  List Film 	   	(ManagerBioskop) : /{namaBioskop}/films (ViewOnly) - film
-16.  List Penjualan     (ManagerBioskop) : /{namaBioskop}/penjualan (ViewOnly) - penjualan
 17.  Laporan Penjualan	(ManagerBioskop) : /{namaBioskop}/laporan (ViewOnly) - laporan
 
 TOTAL HALAMAN APROX = 14
+Laporan, Penayangan, Film, Bioskop, Teater, User
 
 Database:
 
@@ -80,3 +79,10 @@ Penjualan :
 - no_penayangan
 - jumlah_kursi
 - total_harga
+
+Laporan :
+- id
+- tanggal_laporan
+- jumlah_penjualan
+- kursi_terjual
+- pendapatan_rp

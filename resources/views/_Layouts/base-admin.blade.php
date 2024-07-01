@@ -44,28 +44,40 @@
                       border-r-2 border-neutral-800 bg-neutral-800/80">
             <div class="h-full pt-8 px-4 overflow-y-auto font-medium text-gray-200">
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-800 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-800 border-emerald-700 text-white --}}
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
                           href="" > 
-                    <i class="bi bi-house-door ml-1 mr-2"></i> Laporan
+                    <i class="bi bi-clipboard-data ml-1 mr-2"></i> Laporan
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-800 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-800 border-emerald-700 text-white --}}
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
                           href="" > 
-                    <i class="bi bi-house-door ml-1 mr-2"></i> Laporan
+                    <i class="bi bi-cast ml-1 mr-2"></i> Penayangan
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-800 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-800 border-emerald-700 text-white --}}
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
                           href="" > 
-                    <i class="bi bi-house-door ml-1 mr-2"></i> Laporan
+                    <i class="bi bi-film ml-1 mr-2"></i> Film
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-800 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-800 border-emerald-700 text-white --}}
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
                           href="" > 
-                    <i class="bi bi-house-door ml-1 mr-2"></i> Laporan
+                    <i class="bi bi-buildings ml-1 mr-2"></i> Bioskop
+                </a>
+                <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
+                          href="" > 
+                    <i class="bi bi-camera-reels ml-1 mr-2"></i> Teater
+                </a>
+                <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
+                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
+                          href="" > 
+                    <i class="bi bi-people ml-1 mr-2"></i> Users
                 </a>
                 
             </div>

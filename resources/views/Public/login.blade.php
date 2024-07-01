@@ -35,20 +35,20 @@
                   rounded-lg shadow-lg border border-neutral-700">
         <div class="mb-3 text-2xl font-bold text-white">Login Bioskop</div>
         <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-200" for="email">Input email</label>
+            <label class="block mb-2 text-sm font-medium text-gray-200" for="email">Input Email</label>
             <input type="email" placeholder="YourEmail@example.com" required
                    class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
-                          text-sm rounded-lg focus:ring-emerald-700 focus:border-emerald-700"/>
+                          text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
         </div>
         <div class="mb-8">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Input password</label>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Input Password</label>
             <input type="password" id="password" required 
                    class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
-                          text-sm rounded-lg focus:ring-emerald-700 focus:border-emerald-700"/>
+                          text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
         </div>
         <button class="mb-3 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
                        text-center text-white bg-emerald-700 hover:bg-emerald-800 
-                       focus:ring-4 focus:outline-none focus:ring-emerald-300" 
+                       focus:ring-2 focus:outline-none focus:ring-emerald-600" 
                        type="submit">Login</button>
         <p class="text-sm font-light text-gray-300">
             Don’t have an account yet? 

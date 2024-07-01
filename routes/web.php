@@ -26,4 +26,4 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 
 Route::get('/laporan', [LaporanController::class, 'index']);
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
