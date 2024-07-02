@@ -15,8 +15,8 @@ Pastikan Anda telah menginstal:
 Clone repository proyek ini ke komputer Anda:
 
 ```sh
-git clone https://github.com/username/repo-name.git
-cd repo-name
+git clone https://github.com/Jianyao17/Web-Bioskop.git
+cd Web-Bioskop
 ```
 
 ### 2. Instal Dependensi PHP
