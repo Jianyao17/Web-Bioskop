@@ -24,6 +24,7 @@ class Penjualan extends Model
     protected $fillable = [
         'id_user', 
         'id_penayangan',
+        'id_bioskop',
         'list_kursi',
         'total_harga'
     ];

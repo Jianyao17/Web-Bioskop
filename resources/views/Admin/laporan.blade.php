@@ -1,4 +1,3 @@
-@extends('_Layouts.base-admin')
 @section('content')
     <div class="w-full">
         <!-- Main content -->

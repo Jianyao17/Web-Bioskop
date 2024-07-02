@@ -17,12 +17,14 @@ class CreatePenjualanTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_penayangan');
+            $table->unsignedBigInteger('id_bioskop');
             $table->json('list_kursi');
             $table->double('total_harga');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_penayangan')->references('id')->on('penayangan');
+            $table->foreign('id_bioskop')->references('id')->on('gedung_bioskop');
         });
     }
 

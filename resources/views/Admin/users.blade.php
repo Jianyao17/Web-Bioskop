@@ -1,4 +1,3 @@
-@extends('_Layouts.base-admin')
 
 @section('content')
 

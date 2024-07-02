@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Livewire\Component;
 
-class HomeController extends Controller
+class HomeController extends Component
 {
-    public function index()
+    public function render()
     {
-        return view('Public.home');
+        return view('Public.home')
+            ->layout('_Layouts.base', ['page' => 'Home']);
     }
 }

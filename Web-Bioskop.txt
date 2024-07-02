@@ -12,28 +12,31 @@
 
 
 Halaman-halaman :
-1. Home      	(Public) : /
-2. Film      	(Public) : /{namaFilm}
+1. Home      	(Public) : /		- livewire
+2. Film      	(Public) : /{namaFilm}	- livewire
 3. Login        (Public) : /login
 4. Regsiter     (Public) : /register
 5. Booking Seat (Logged) : /booking-seat/
 6. Pesan Tiket  (Logged) : /pesan-tiket/
 
-7.   List User 	   	(SuperAdmin) : /super-admin/users (CRUD) - user
-8.   List Film 	   	(SuperAdmin) : /super-admin/films (CRUD) - film
-9.   List Bioskop       (SuperAdmin) : /super-admin/list-bioskop (CRUD) - bioskop
+7.   List User 	   	(SuperAdmin) : /semua-bioskop/users (CRUD) - user
+8.   List Film 	   	(SuperAdmin) : /semua-bioskop/films (CRUD) - film
+9.   List Bioskop       (SuperAdmin) : /semua-bioskop/list-bioskop (CRUD) - bioskop
 
-10.  List Penanyangan	(SuperAdmin) : /super-admin/penayangan (ViewOnly) - penayangan
-12.  Laporan Penjualan	(SuperAdmin) : /super-admin/laporan (ViewOnly) - laporan
+10.  List Penanyangan	(SuperAdmin) : /semua-bioskop/penayangan (ViewOnly) - penayangan
+12.  Laporan Penjualan	(SuperAdmin) : /semua-bioskop/laporan (ViewOnly) - laporan
 
-13.  List Teater	(ManagerBioskop) : /{namaBioskop}/teater-room (CRUD) - teater
-14.  List Penanyangan   (ManagerBioskop) : /{namaBioskop}/penayangan (CRUD) - penayangan
+13.  List Teater	(AdminBioskop) : /{namaBioskop}/teater-room (CRUD) - teater
+14.  List Penanyangan   (AdminBioskop) : /{namaBioskop}/penayangan (CRUD) - penayangan
 
-15.  List Film 	   	(ManagerBioskop) : /{namaBioskop}/films (ViewOnly) - film
-17.  Laporan Penjualan	(ManagerBioskop) : /{namaBioskop}/laporan (ViewOnly) - laporan
+15.  List Film 	   	(AdminBioskop) : /{namaBioskop}/films (ViewOnly) - film
+17.  Laporan Penjualan	(AdminBioskop) : /{namaBioskop}/laporan (ViewOnly) - laporan
 
 TOTAL HALAMAN APROX = 14
 Laporan, Penayangan, Film, Bioskop, Teater, User
+
+SuperAdmin : Laporan-ViewAllBioskop, Penayangan-ViewAllBioskop, Film-crud, Bioskop-crud, Teater-ViewAll, User-CrudAll
+ManagerBioskop : Laporan-ViewCurrentBioskop, Penayangan-CrudCurrentBioskop, Film-view, Teater-CrudCurrentBioskop
 
 Database:
 

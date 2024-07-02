@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Livewire\Component;
 
-class FilmController extends Controller
+class FilmController extends Component
 {
-    public function index()
+    public $film;
+
+    public function mount($nama_film)
     {
-        return view('Public.film');
+        $this->film = $nama_film;
+    }
+
+    public function render()
+    {
+        return view('Public.film')
+            ->layout('_Layouts.base', ['page' => $this->film]);
     }
 }

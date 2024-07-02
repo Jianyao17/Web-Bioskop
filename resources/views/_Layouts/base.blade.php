@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="/css/styles.css">
     <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body class="font-roboto pt-16 bg-neutral-900">
@@ -43,5 +44,6 @@
     @yield('content')
 
     <script defer src="{{ asset('js/flowbite.js') }}"></script>
+    @livewireScripts
 </body>
 </html>

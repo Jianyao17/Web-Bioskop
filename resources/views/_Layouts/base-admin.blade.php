@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Document</title>
+    <title>{{ $page ?? 'Document' }}</title>
 
     <link rel="stylesheet" href="/css/styles.css">
     <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body class="font-roboto pt-16 bg-neutral-900">
     {{-- Navbar --}}
@@ -45,39 +46,33 @@
                       border-r-2 border-neutral-800 bg-neutral-800/80">
             <div class="h-full pt-8 px-4 overflow-y-auto font-medium text-gray-200">
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900
+                          @if ($page == 'Laporan') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/empty/laporan" > 
                     <i class="bi bi-clipboard-data ml-1 mr-2"></i> Laporan
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900
+                          @if ($page == 'Penayangan') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/empty/penayangan" > 
                     <i class="bi bi-cast ml-1 mr-2"></i> Penayangan
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900
+                          @if ($page == 'Film') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/empty/film" > 
                     <i class="bi bi-film ml-1 mr-2"></i> Film
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
-                    <i class="bi bi-buildings ml-1 mr-2"></i> Bioskop
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900
+                          @if ($page == 'Teater') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/empty/teater" > 
+                    <i class="bi bi-buildings ml-1 mr-2"></i> Teater
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
-                    <i class="bi bi-camera-reels ml-1 mr-2"></i> Teater
-                </a>
-                <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
-                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900" 
-                          {{-- bg-emerald-700 border-emerald-700 text-white --}}
-                          href="" > 
+                          hover:bg-emerald-700 hover:text-white active:bg-emerald-900
+                          @if ($page == 'Users') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/users" > 
                     <i class="bi bi-people ml-1 mr-2"></i> Users
                 </a>
                 
@@ -89,5 +84,6 @@
     </div>
 
     <script defer src="{{ asset('js/flowbite.js') }}"></script>
+    @livewireScripts
 </body>
 </html>

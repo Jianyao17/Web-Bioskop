@@ -9,7 +9,7 @@
         </div>
         <div class="w-2/3 p-8 z-10 backdrop-blur-lg flex flex-col
                     bg-gradient-to-r from-black/60 to-black/80">
-            <div class="mb-4 text-6xl font-bold text-white">Inside Out 2</div>
+            <div class="mb-4 text-6xl font-bold text-white">{{ $film }}</div>
             <div class="mb-1 text-2xl font-medium text-gray-200">Duration: 2h 30m</div>
             <div class="mb-2 text-xl text-gray-200">Rating: PG-13</div>
             <div class="mt-1 min-h-48 overflow-hidden text-balance text-transparent font-medium antialiased
