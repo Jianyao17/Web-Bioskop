@@ -30,8 +30,8 @@
                 bg-gradient-to-r from-black/60 to-black/80">
         <div class="w-full flex flex-row items-center text-gray-200">
             <div class="mr-3 min-w-32 text-2xl font-medium">Playing At</div>
-            <select class="mr-3 w-1/5 bg-neutral-700 rounded-lg
-                           border border-transparent outline-none" 
+            <select class="mr-3 w-1/5 bg-neutral-700 rounded-lg ring-2 ring-transparent
+                           border border-transparent outline-none focus:ring-emerald-600" 
                            name="kota" id="kota">
                 <option value="sby">Surabaya</option>
                 <option value="jkt">Jakarta</option>

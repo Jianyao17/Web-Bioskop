@@ -15,8 +15,8 @@ class CreateGedungBioskopTable extends Migration
     {
         Schema::create('gedung_bioskop', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_bioskop');
-            $table->string('lokasi_bioskop');
+            $table->string('nama_bioskop')->unique();
+            $table->string('lokasi_bioskop')->nullable();
             $table->timestamps();
         });
     }

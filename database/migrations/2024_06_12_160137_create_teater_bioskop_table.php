@@ -17,7 +17,7 @@ class CreateTeaterBioskopTable extends Migration
         Schema::create('teater_bioskop', function (Blueprint $table) {
             $table->id();
             $table->string('nama_teater');
-            $table->foreignId('id_bioskop');
+            $table->unsignedBigInteger('id_bioskop');
             $table->json('list_kursi');
             $table->integer('kapasitas');
             $table->string('status');

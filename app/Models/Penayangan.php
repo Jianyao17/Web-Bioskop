@@ -15,4 +15,18 @@ class Penayangan extends Model
      * @var string
      */
     protected $table = 'penayangan';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'waktu_tayang', 
+        'id_film',
+        'id_bioskop',
+        'id_teater',
+        'harga_tiket',
+        'status'
+    ];
 }

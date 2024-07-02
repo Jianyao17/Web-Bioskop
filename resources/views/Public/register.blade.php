@@ -36,9 +36,9 @@
         <div class="mb-3 text-2xl font-bold text-white">Register Bioskop</div>
         <div class="mb-5">
             <label class="block mb-2 text-sm font-medium text-gray-200" for="name">Input Name</label>
-            <input type="name" id="name" name="name" required
+            <input type="text" id="name" name="name" required
                 class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
-                        text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
+                       text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
         </div>
         <div class="mb-5">
             <label class="block mb-2 text-sm font-medium text-gray-200" for="email">Input Email</label>

@@ -27,11 +27,12 @@
                 <a class="py-2 pl-4 pr-3 rounded-md self-center text-2xl 
                           shadow-xl hover:bg-red-600 hover:shadow-red-600/50 
                           cursor-pointer active:bg-red-700 active:shadow-red-700/50"
-                          href="">
+                          href="/logout">
                     <i class="bi bi-box-arrow-right"></i>
                 </a>
                 {{-- <a class="py-2 px-3 flex flex-row items-center rounded-md shadow-xl
-                          cursor-pointer hover:bg-emerald-700 active:bg-emerald-900/50">
+                          cursor-pointer hover:bg-emerald-700 active:bg-emerald-900/50"
+                          href="/login">
                     <i class="bi bi-box-arrow-in-right mr-2 text-2xl"></i>
                     <div class="text-lg px-2"> Login </div>
                 </a> --}}

@@ -15,4 +15,14 @@ class Bioskop extends Model
      * @var string
      */
     protected $table = 'gedung_bioskop';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nama_bioskop', 
+        'lokasi_bioskop',
+    ];
 }

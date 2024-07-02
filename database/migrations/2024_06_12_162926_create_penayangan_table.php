@@ -16,9 +16,11 @@ class CreatePenayanganTable extends Migration
         Schema::create('penayangan', function (Blueprint $table) {
             $table->id();
             $table->dateTime('waktu_tayang');
-            $table->foreignId('id_film');
-            $table->foreignId('id_bioskop');
-            $table->foreignId('id_teater');
+            $table->unsignedBigInteger('id_film');
+            $table->unsignedBigInteger('id_bioskop');
+            $table->unsignedBigInteger('id_teater');
+            $table->double('harga_tiket');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('id_film')->references('id')->on('films');

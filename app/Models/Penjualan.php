@@ -15,4 +15,16 @@ class Penjualan extends Model
      * @var string
      */
     protected $table = 'penjualan';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_user', 
+        'id_penayangan',
+        'list_kursi',
+        'total_harga'
+    ];
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teater extends Model
+class Laporan extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Teater extends Model
      *
      * @var string
      */
-    protected $table = 'teater_bioskop';
+    protected $table = 'laporan';
 
     /**
      * The attributes that are mass assignable.
@@ -22,10 +22,9 @@ class Teater extends Model
      * @var array
      */
     protected $fillable = [
-        'nama_teater', 
-        'id_bioskop',
-        'list_kursi',
-        'kapasitas',
-        'status'
+        'tgl_laporan', 
+        'jml_penjualan',
+        'kursi_terjual',
+        'pendapatan_rp'
     ];
 }

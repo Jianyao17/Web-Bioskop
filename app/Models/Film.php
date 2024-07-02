@@ -15,4 +15,16 @@ class Film extends Model
      * @var string
      */
     protected $table = 'films';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'judul_film', 
+        'durasi_menit',
+        'deskripsi',
+        'status'
+    ];
 }

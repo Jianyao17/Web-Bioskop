@@ -8,8 +8,8 @@
 {{-- Toolbar --}}
 <div class="mb-6 w-full sticky top-20 z-20 flex flex-row 
             items-center rounded-lg text-gray-200">
-    <select class="mr-3 w-auto bg-neutral-700 rounded-lg drop-shadow-2xl
-                   border border-transparent outline-none" 
+    <select class="mr-3 w-auto bg-neutral-700 drop-shadow-2xl focus:ring-emerald-600
+                   border border-transparent outline-none rounded-lg ring-2 ring-transparent" 
                    name="kota" id="kota">
         <option value="all">Semua</option>
         <option value="super-admin">Super Admin</option>
