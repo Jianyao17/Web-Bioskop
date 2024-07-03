@@ -15,6 +15,7 @@ class CreateFilmsTable extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
+            $table->string('poster_film');
             $table->string('judul_film')->unique();
             $table->time('durasi');
             $table->longText('deskripsi');
