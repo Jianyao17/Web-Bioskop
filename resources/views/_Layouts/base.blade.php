@@ -43,7 +43,7 @@
     
     @yield('content')
 
-    <script defer src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
+    <script src="{{ asset('js/flowbite.js') }}" crossorigin="anonymous"></script>
 </body>
 </html>

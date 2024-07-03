@@ -20,7 +20,6 @@ class CreateTeaterBioskopTable extends Migration
             $table->unsignedBigInteger('id_bioskop');
             $table->json('list_kursi');
             $table->integer('kapasitas');
-            $table->string('status');
             $table->timestamps();
 
             $table->foreign('id_bioskop')->references('id')->on('gedung_bioskop');

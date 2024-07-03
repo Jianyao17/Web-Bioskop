@@ -5,13 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>{{ $page ?? 'Document' }}</title>
-
+    
+    @livewireStyles
     <link rel="stylesheet" href="/css/styles.css">
     <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet">
-    @livewireStyles
+    <style>
+        [modal-backdrop] {
+            z-index: 30 !important;
+        }
+    </style>
+    
+    <title>{{ $page ?? 'Document' }}</title>
 </head>
 <body class="font-roboto pt-16 bg-neutral-900">
+
+    <!-- Toast Container -->
+    <div id="liveToast" role="alert" aria-atomic="true" 
+         class="fixed place-self-center left-0 right-0 top-0 mt-2 z-50 border rounded-lg font-medium
+                min-w-80 shadow-xl shadow-neutral-900/40 border-green-600 bg-green-700 text-white
+                transition-all ease-in-out duration-500 transform -translate-y-10 opacity-0 hidden">
+        <div class="flex flex-row justify-between">
+            <i class="bi bi-exclamation-circle p-3 pl-4"></i>
+            <div id="message" class="py-3 flex-grow text-left"></div>
+            <button type="button"
+                    aria-label="Close" data-dismiss-target="#liveToast"
+                    class="px-3 py-2 rounded-lg outline-none hover:bg-neutral-800/30">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+    </div>
+
     {{-- Navbar --}}
     <nav class="bg-emerald-800 text-gray-200 backdrop-blur-md z-20
                 border-emerald-800 border-b-2 top-0 fixed w-full">
@@ -82,8 +105,54 @@
             @yield('content')
         </div>
     </div>
-
-    <script defer src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
+    <script defer src="{{ asset('js/flowbite.js') }}" crossorigin="anonymous"></script>
+    <script>
+        const toastElement = document.getElementById('liveToast');
+
+        window.addEventListener('notify', event => {
+            toastElement.classList.remove('bg-red-700', 'border-red-600');
+            toastElement.classList.remove('bg-green-700', 'border-green-600');
+
+            if (event.detail.type == 'success') {
+                toastElement.classList.add('bg-green-700', 'border-green-600');
+            } else if (event.detail.type == 'failed') {
+                toastElement.classList.add('bg-red-700', 'border-red-600');
+            }
+
+            document.getElementById('message').innerHTML = event.detail.message;
+            
+            toastElement.classList.remove('hidden', 'opacity-0', '-translate-y-10');
+            toastElement.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toastElement.classList.remove('opacity-100', 'translate-y-0');
+                toastElement.classList.add('opacity-0', '-translate-y-10');
+                setTimeout(() => {
+                    toastElement.classList.add('hidden');
+                }, 500);
+            }, 3000);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Inisialisasi modal dengan semua elemen yang memiliki class form
+            const modals = document.querySelectorAll('.modal');
+            const modalInstances = [];
+
+            modals.forEach(modalEl => {
+                modalInstances.push(new Modal(modalEl));
+            });
+
+            // Event listener untuk menutup modal
+            window.addEventListener('close-modal', () => {
+                modalInstances.forEach(modal => {
+                    modal.hide();
+                    document.querySelector("body > div[modal-backdrop]")?.remove()
+                });
+            });
+        });
+    </script>
 </body>
 </html>

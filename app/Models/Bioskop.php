@@ -25,4 +25,9 @@ class Bioskop extends Model
         'nama_bioskop', 
         'lokasi_bioskop',
     ];
+
+    public function AdminType()
+    {
+        return 'Admin-' . $this->nama_bioskop;
+    }
 }
