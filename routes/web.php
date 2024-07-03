@@ -25,15 +25,27 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::middleware('guest')->group(function() 
+{
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::get('/register', [RegisterController::class, 'index']);
+    
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/register', [RegisterController::class, 'register']);
+});
+
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/', HomeController::class);
 Route::get('/film/{nama_film}', FilmController::class);
 
-Route::get('/{bioskop}/laporan', LaporanController::class);
-Route::get('/{bioskop}/penayangan', PenayanganController::class);
-Route::get('/{bioskop}/film', ListFilmController::class);
-Route::get('/{bioskop}/teater', BioskopController::class);
+
+Route::middleware(['auth'])->group(function() 
+{
+    Route::get('/{admin_role}/laporan', LaporanController::class);
+    Route::get('/{admin_role}/penayangan', PenayanganController::class);
+    Route::get('/{admin_role}/film', ListFilmController::class);
+    Route::get('/{admin_role}/teater', BioskopController::class);
+});
 
 Route::get('/users', UserController::class);

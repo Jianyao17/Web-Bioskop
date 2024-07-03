@@ -32,19 +32,27 @@
     </nav>
     
     <form class="p-6 max-w-sm w-full flex flex-col mx-auto bg-neutral-800/80 
-                  rounded-lg shadow-lg border border-neutral-700">
-        <div class="mb-3 text-2xl font-bold text-white">Login Bioskop</div>
-        <div class="mb-5">
+                rounded-lg shadow-lg border border-neutral-700"
+                action="/login" method="POST">
+                @csrf
+        <div class="mb-4 text-2xl font-bold text-white">Login Bioskop</div>
+        <div class="mb-8">
             <label class="block mb-2 text-sm font-medium text-gray-200" for="email">Input Email</label>
-            <input type="email" placeholder="YourEmail@example.com" required
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="YourEmail@example.com"
                    class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
                           text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
+                @error('email')
+                    <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
+                @enderror
         </div>
         <div class="mb-8">
             <label for="password" class="block mb-2 text-sm font-medium text-gray-200">Input Password</label>
-            <input type="password" id="password" required 
+            <input type="password" id="password" name="password"
                    class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
                           text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
+                @error('password')
+                          <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
+                @enderror
         </div>
         <button class="mb-3 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
                        text-center text-white bg-emerald-700 hover:bg-emerald-800 

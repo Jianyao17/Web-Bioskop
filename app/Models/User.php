@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function BioskopName()
+    {
+        return str_replace('admin-', '', $this->role);
+    }
+
+    public function AdminBioskop()
+    {
+        return strpos($this->role, 'Admin-') == 0;
+    }
 }

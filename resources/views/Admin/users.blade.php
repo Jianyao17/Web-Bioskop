@@ -127,7 +127,7 @@
                         <select class="w-full bg-neutral-700 rounded-lg text-md
                                         border border-transparent outline-none" 
                                         name="role" wire:model="role">
-                            <option value="Super-Admin" selected>   Super Admin</option>
+                            <option value="Admin-Super" selected>   Super Admin</option>
                             @foreach ($list_role as $admin_role)
                                 <option value="{{ $admin_role }}">  {{ $admin_role }}</option>
                             @endforeach

@@ -43,22 +43,28 @@
                 <div class="font-medium text-xl">Web Bioskop</div>
             </a>
             <div class="w-auto mx-3 flex flex-row gap-1 self-center">
-                <div class="flex flex-row items-center py-2 px-3 rounded-md shadow-xl">
-                    <i class="bi bi-person-square mr-2 text-2xl"></i>
-                    <div class="text-lg"> Arief Wiradarma Tan </div>
-                </div>
-                <a class="py-2 pl-4 pr-3 rounded-md self-center text-2xl 
-                          shadow-xl hover:bg-red-600 hover:shadow-red-600/50 
-                          cursor-pointer active:bg-red-700 active:shadow-red-700/50"
-                          href="/logout">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
-                {{-- <a class="py-2 px-3 flex flex-row items-center rounded-md shadow-xl
-                          cursor-pointer hover:bg-emerald-700 active:bg-emerald-900/50"
-                          href="/login">
+                @auth
+                    <div class="flex flex-row items-center py-2 px-3 rounded-md shadow-xl">
+                        <i class="bi bi-person-square mr-2 text-2xl"></i>
+                        <div class="text-lg"> {{ ucfirst(auth()->user()->name) }} </div>
+                    </div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="py-2 pl-4 pr-3 rounded-md self-center text-2xl 
+                                    shadow-xl hover:bg-red-600 hover:shadow-red-600/50 
+                                    cursor-pointer active:bg-red-700 active:shadow-red-700/50"
+                                    type="submit">
+                            <i class="bi bi-box-arrow-right"></i>
+                        </button>
+                    </form>
+                @else
+                <a class="py-2 px-3 flex flex-row items-center rounded-md shadow-xl
+                        cursor-pointer hover:bg-emerald-700 active:bg-emerald-900/50"
+                        href="/login">
                     <i class="bi bi-box-arrow-in-right mr-2 text-2xl"></i>
                     <div class="text-lg px-2"> Login </div>
-                </a> --}}
+                </a>
+                @endauth
             </div>
         </div>
     </nav>
