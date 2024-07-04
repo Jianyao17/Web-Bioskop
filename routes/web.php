@@ -48,4 +48,6 @@ Route::middleware(['auth'])->group(function()
     Route::get('/{admin_role}/bioskop', BioskopController::class);
 });
 
+
 Route::get('/users', UserController::class);
+Route::get('/{bioskop}/teater', BioskopController::class);
