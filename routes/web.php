@@ -36,4 +36,6 @@ Route::get('/{bioskop}/penayangan', PenayanganController::class);
 Route::get('/{bioskop}/film', ListFilmController::class);
 Route::get('/{bioskop}/teater', BioskopController::class);
 
+
 Route::get('/users', UserController::class);
+Route::get('/{bioskop}/teater', BioskopController::class);
