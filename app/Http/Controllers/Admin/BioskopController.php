@@ -2,64 +2,65 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Models\Bioskop;
+use App\Models\Teater;
 use Livewire\Component;
 
 // Super Admin & Admin Bioskop
 class BioskopController extends Component
 {
-    public function mount()
-    {
-        
-    }
+    public $nama_bioskop, $lokasi_bioskop, $bioskop_id;
+    public $nama_teater, $id_bioskop, $list_kursi, $kapasitas, $teater_id;
+    public $list_bioskop;
+    
 
     public function render()
     {
+        $this->list_bioskop = Bioskop::orderBy('nama_bioskop')->get();
+        
         return view('Admin.bioskop')
-            ->layoutData(['page' => 'Teater']);
+            ->extends('_Layouts.base-admin', ['page' => 'Bioskop']);
     }
-    public function storeBioskop(){
+
+    public function storeBioskop()
+    {
         $this->validate([
-            'nama_bioskop'      => 'required|string',
-            'lokasi_bioskop'     => 'required|string',
-
+            'nama_bioskop'  => 'required|unique:gedung_bioskop,nama_bioskop',
+            'lokasi_bioskop'=> 'required|string',
         ]);
 
-
-        Bioskop ::create([
+        Bioskop::create([
             'nama_bioskop'  => $this->nama_bioskop,
-            'lokasi_bioskop'  => $this->lokasi_bioskop,
+            'lokasi_bioskop'=> $this->lokasi_bioskop,
         ]);
 
-        $this->resetValue();
+        $this->resetValue1();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Bioskop Berhasil Ditambahkan']);
 
     }
 
-    public function storeTeater(){
+    public function storeTeater()
+    {
         $this->validate([
-            'nama_teater'      => 'required|string',
-            'id_bioskop '     => 'required|string',
-            'list_kursi'  => 'required|string|integer',
-            'kapasitas'      => 'required|string',
-
+            'nama_teater'   => 'required|string|min:4',
+            'id_bioskop '   => 'required|integer',
+            'list_kursi'    => 'required|json',
+            'kapasitas'     => 'required|numeric',
         ]);
-
 
         Teater ::create([
-            'nama_teater'  => $this->nama_teater,
-            'id_bioskop'  => $this->id_bioskop,
-            'list_kursi'  => $this->list_kursi,
-            'kapasitas' => $this->kapasitas,
+            'nama_teater'   => $this->nama_teater,
+            'id_bioskop'    => $this->id_bioskop,
+            'list_kursi'    => $this->list_kursi,
+            'kapasitas'     => $this->kapasitas,
         ]);
 
-        $this->resetValue();
+        $this->resetValue2();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Teater Berhasil Ditambahkan']);
-
     }
 
     public function editBioskop($id) 
@@ -73,6 +74,7 @@ class BioskopController extends Component
             [ 'type' => 'failed', 'message' => 'Bioskop Tidak Ditemukan']);  
             return;
         }
+
         $this->bioskop_id = $id;
         $this->nama_bioskop = $bioskop->nama_bioskop; 
         $this->lokasi_bioskop = $bioskop->lokasi_bioskop;
@@ -90,6 +92,7 @@ class BioskopController extends Component
             [ 'type' => 'failed', 'message' => 'Teater Tidak Ditemukan']);  
             return;
         }
+
         $this->teater_id = $id;
         $this->nama_teater = $teater->nama_teater; 
         $this->id_bioskop = $teater->id_bioskop;
@@ -102,18 +105,18 @@ class BioskopController extends Component
     {
         // Validate data to be updated
         $this->validate([ 
-            'nama_bioskop'      => 'required|string',
-            'lokasi_bioskop'     => 'required|string',
+            'nama_bioskop'  => 'required|unique:gedung_bioskop,nama_bioskop',
+            'lokasi_bioskop'=> 'required|string',
         ]);
         
         // Update data in database
         Bioskop::find($this->bioskop_id)->update(
         [
             'nama_bioskop'  => $this->nama_bioskop,
-            'lokasi_bioskop'  => $this->lokasi_bioskop,
+            'lokasi_bioskop'=> $this->lokasi_bioskop,
         ]);
 
-        $this->resetValue();
+        $this->resetValue1();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Bioskop Berhasil Diperbarui']);
@@ -123,26 +126,27 @@ class BioskopController extends Component
     {
         // Validate data to be updated
         $this->validate([ 
-            'nama_teater'      => 'required|string',
-            'id_bioskop '     => 'required|string',
-            'list_kursi'  => 'required|string|integer',
-            'kapasitas'      => 'required|string',
+            'nama_teater'   => 'required|string|min:4',
+            'id_bioskop '   => 'required|integer',
+            'list_kursi'    => 'required|json',
+            'kapasitas'     => 'required|numeric',
         ]);
         
         // Update data in database
         Teater::find($this->teater_id)->update(
         [
-            'nama_teater'  => $this->nama_teater,
-            'id_bioskop'  => $this->id_bioskop,
-            'list_kursi'  => $this->list_kursi,
-            'kapasitas' => $this->kapasitas,
+            'nama_teater'   => $this->nama_teater,
+            'id_bioskop'    => $this->id_bioskop,
+            'list_kursi'    => $this->list_kursi,
+            'kapasitas'     => $this->kapasitas,
         ]);
 
-        $this->resetValue();
+        $this->resetValue2();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Teater Berhasil Diperbarui']);
     }
+
     public function deleteBioskop($id)
     {
         $bioskop = Bioskop::find($id);
@@ -183,7 +187,7 @@ class BioskopController extends Component
     {
         Bioskop::find($this->bioskop_id)->delete();
 
-        $this->resetValue();
+        $this->resetValue1();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Bioskop Berhasil Dihapus']);
@@ -193,7 +197,7 @@ class BioskopController extends Component
     {
         Teater::find($this->teater_id)->delete();
 
-        $this->resetValue();
+        $this->resetValue2();
         $this->dispatchBrowserEvent('close-modal');
         $this->dispatchBrowserEvent('notify', 
         [ 'type' => 'success', 'message' => 'Teater Berhasil Dihapus']);
@@ -208,8 +212,8 @@ class BioskopController extends Component
     public function resetValue2()
     {
         $this->nama_teater = '';
-        $this->id_bioskop = '';
+        $this->id_bioskop = null;
         $this->list_kursi = '';
-        $this->kapasitas = '';
+        $this->kapasitas = 0;
     }
 }

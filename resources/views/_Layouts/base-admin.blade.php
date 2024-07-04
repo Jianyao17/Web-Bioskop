@@ -94,9 +94,9 @@
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
                           hover:bg-emerald-700 hover:text-white active:bg-emerald-900
-                          @if ($page == 'Teater') bg-emerald-700 border-emerald-700 text-white @endif"
-                          href="/empty/teater" > 
-                    <i class="bi bi-buildings ml-1 mr-2"></i> Teater
+                          @if ($page == 'Bioskop') bg-emerald-700 border-emerald-700 text-white @endif"
+                          href="/empty/bioskop" > 
+                    <i class="bi bi-buildings ml-1 mr-2"></i> Bioskop
                 </a>
                 <a class="flex items-center mb-2 p-2 rounded-lg border border-transparent
                           hover:bg-emerald-700 hover:text-white active:bg-emerald-900

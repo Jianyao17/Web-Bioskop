@@ -23,7 +23,7 @@ class Laporan extends Model
      */
     protected $fillable = [
         'tgl_laporan', 
-        'id_bioskop',
+        'bioskop_id',
         'jml_penjualan',
         'kursi_terjual',
         'pendapatan_rp'

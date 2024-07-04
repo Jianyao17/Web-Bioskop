@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function()
     Route::get('/{admin_role}/laporan', LaporanController::class);
     Route::get('/{admin_role}/penayangan', PenayanganController::class);
     Route::get('/{admin_role}/film', ListFilmController::class);
-    Route::get('/{admin_role}/teater', BioskopController::class);
+    Route::get('/{admin_role}/bioskop', BioskopController::class);
 });
 
 Route::get('/users', UserController::class);

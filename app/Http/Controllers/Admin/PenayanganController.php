@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Penayangan;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
 class PenayanganController extends Component
 {
-    public $waktu_tayang,$id_film,$id_bioskop,$id_teater,$harga_tiket,$status;
+    public $waktu_tayang, $id_film, $id_bioskop, $id_teater, $harga_tiket, $status;
     public $penayangan,$penayangan_id;
 
     public function mount()
@@ -18,18 +19,18 @@ class PenayanganController extends Component
     public function render()
     {
         return view('Admin.penayangan')
-            ->layoutData(['page' => 'Penayangan']);
+            ->extends('_Layouts.base-admin', ['page' => 'Penayangan']);
     }
 
-    public function store(){
+    public function store()
+    {
         $this->validate([
-            'waktu_tayang'      => 'required|string',
-            'id_film'     => 'required|string',
-            'id_bioskop'  => 'required|string|integer',
-            'id_teater'      => 'required|string',
-            'harga_tiket'    =>  'required|string',
+            'waktu_tayang'  => 'required|string',
+            'id_film'       => 'required|string',
+            'id_bioskop'    => 'required|string|integer',
+            'id_teater'     => 'required|string',
+            'harga_tiket'   => 'required|string',
             'status'        => 'required|string'
-
         ]);
 
 

@@ -17,7 +17,7 @@ class CreateFilmsTable extends Migration
             $table->id();
             $table->string('poster_film');
             $table->string('judul_film')->unique();
-            $table->time('durasi');
+            $table->float('durasi_menit');
             $table->longText('deskripsi');
             $table->string('status');
             $table->timestamps();

@@ -15,16 +15,16 @@ class CreatePenjualanTable extends Migration
     {
         Schema::create('penjualan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_penayangan');
-            $table->unsignedBigInteger('id_bioskop');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('penayangan_id');
+            $table->unsignedBigInteger('bioskop_id');
             $table->json('list_kursi');
             $table->double('total_harga');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_penayangan')->references('id')->on('penayangan');
-            $table->foreign('id_bioskop')->references('id')->on('gedung_bioskop');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('penayangan_id')->references('id')->on('penayangan');
+            $table->foreign('bioskop_id')->references('id')->on('gedung_bioskop');
         });
     }
 

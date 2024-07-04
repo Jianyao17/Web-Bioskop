@@ -17,12 +17,12 @@ class CreateTeaterBioskopTable extends Migration
         Schema::create('teater_bioskop', function (Blueprint $table) {
             $table->id();
             $table->string('nama_teater');
-            $table->unsignedBigInteger('id_bioskop');
+            $table->foreignId('bioskop_id')
+                  ->constrained('gedung_bioskop')
+                  ->onDelete('cascade');
             $table->json('list_kursi');
             $table->integer('kapasitas');
             $table->timestamps();
-
-            $table->foreign('id_bioskop')->references('id')->on('gedung_bioskop');
         });
     }
 

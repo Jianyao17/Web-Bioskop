@@ -30,4 +30,9 @@ class Bioskop extends Model
     {
         return 'Admin-' . $this->nama_bioskop;
     }
+
+    public function teater()
+    {
+        return $this->hasMany(Teater::class);
+    }
 }

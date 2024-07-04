@@ -2,42 +2,47 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Models\Film;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 // Super Admin & Admin Bioskop
 class ListFilmController extends Component
 {
-    public $poster_film,$judul_film,$durasi,$deskripsi,$status;
-    public $films,$film_id;
+    use WithFileUploads;
+    
+    public $poster, $judul, $durasi, $deskripsi, $status;
+    public $films, $film_id, $search = '';
 
-    public function mount()
-    {
-        
-    }
 
     public function render()
     {
+        $this->films = Film::where('judul_film', 'like', '%'.$this->search.'%')
+                         ->orderBy('updated_at')->get();
+
         return view('Admin.list-film')
-            ->layoutData(['page' => 'Film']);
+            ->extends('_Layouts.base-admin', ['page' => 'Film']);
     }
 
-    public function store(){
+    public function store()
+    {
+        if (!Auth::user()->isSuperAdmin()) return;
+
         $this->validate([
-            'poster_film'      => 'required|string',
-            'judul_film'     => 'required|string',
-            'durasi'  => 'required|string|integer',
-            'deskripsi'      => 'required|string',
-            'status'    =>  'required|string'
+            'poster'        => 'nullable|sometimes|file|image',
+            'judul'         => 'required|string',
+            'durasi'        => 'required|numeric',
+            'deskripsi'     => 'required|string',
         ]);
 
-
-        Film ::create([
-            'poster_film'  => $this->poster_film,
-            'judul_film'  => $this->judul_film,
-            'durasi'  => $this->durasi,
-            'deskripsi'   => $this->role,
-            'status' => $this->status
+        Film::create([
+            'poster_film'   => $this->poster->store('img'),
+            'judul_film'    => $this->judul,
+            'durasi_menit'  => $this->durasi,
+            'deskripsi'     => $this->deskripsi,
+            'status'        => 'Coming Soon',
         ]);
 
         $this->resetValue();
@@ -58,34 +63,41 @@ class ListFilmController extends Component
             [ 'type' => 'failed', 'message' => 'Film Tidak Ditemukan']);  
             return;
         }
-        $this->film_id = $id;
-        $this->poster_film = $film->poster_film; 
-        $this->judul_film = $film->judul_film;
-        $this->durasi = $film->durasi;
-        $this->deskripsi = $film->deskripsi;
-        $this->status = $film->status;
+        $this->film_id      = $id;
+        $this->judul        = $film->judul_film;
+        $this->durasi       = $film->durasi_menit;
+        $this->deskripsi    = $film->deskripsi;
+        $this->status       = $film->status;
 
     }
 
     public function update() 
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+        
         // Validate data to be updated
         $this->validate([ 
-            'poster_film'      => 'required|string',
-            'judul_film'     => 'required|string',
-            'durasi'  => 'required|string|integer',
-            'deskripsi'      => 'required|string',
-            'status'    =>  'required|string'
+            'poster'        => 'nullable|sometimes|file|image',
+            'judul'         => 'required|string',
+            'durasi'        => 'required|numeric',
+            'deskripsi'     => 'required|string',
         ]);
+
+        $img_path = Film::where('id', $this->film_id)->first()->poster_film;
+
+        if ($this->poster)
+        {
+            Storage::delete($img_path);
+            $img_path = $this->poster->store('img');
+        }
         
         // Update data in database
         Film::find($this->film_id)->update(
         [
-            'poster_film'  => $this->poster_film,
-            'judul_film'  => $this->judul_film,
-            'durasi'  => $this->durasi,
-            'deskripsi'   => $this->role,
-            'status' => $this->status
+            'poster_film'   => $img_path,
+            'judul_film'    => $this->judul,
+            'durasi_menit'  => $this->durasi,
+            'deskripsi'     => $this->deskripsi,
         ]);
 
         $this->resetValue();
@@ -106,17 +118,20 @@ class ListFilmController extends Component
             return;
         }
 
-        $this->film_id = $id;
-        $this->poster_film = $film->poster_film; 
-        $this->judul_film = $film->judul_film;
-        $this->durasi = $film->durasi;
-        $this->deskripsi = $film->deskripsi;
-        $this->status = $film->status;
+        $this->film_id      = $id;
+        $this->poster       = $film->poster_film; 
+        $this->judul        = $film->judul_film;
+        $this->durasi       = $film->durasi_menit;
+        $this->deskripsi    = $film->deskripsi;
+        $this->status       = $film->status;
     }
 
     public function delete()
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+
         Film::find($this->film_id)->delete();
+        Storage::delete($this->poster);
 
         $this->resetValue();
         $this->dispatchBrowserEvent('close-modal');
@@ -126,8 +141,7 @@ class ListFilmController extends Component
 
     public function resetValue()
     {
-        $this->poster_film = '';
-        $this->judul_film = '';
+        $this->judul = '';
         $this->durasi = '';
         $this->deskripsi = '';
         $this->status = '';

@@ -1,4 +1,4 @@
-@section('content')
+<div>
     
 <div class="mb-3 text-3xl font-semibold">Penayangan Film</div>
 <p class="mb-8">Tambah, Edit & Atur Penayangan Film</p>
@@ -29,4 +29,8 @@
     </button>
 </div>
 
-@endsection
+<div class="w3/4 mx-auto">
+    
+</div>
+
+</div>

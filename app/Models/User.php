@@ -48,8 +48,13 @@ class User extends Authenticatable
         return str_replace('admin-', '', $this->role);
     }
 
-    public function AdminBioskop()
+    public function isAdminBioskop()
     {
         return strpos($this->role, 'Admin-') == 0;
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role == 'Admin-Super';
     }
 }

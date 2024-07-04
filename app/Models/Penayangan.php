@@ -23,10 +23,25 @@ class Penayangan extends Model
      */
     protected $fillable = [
         'waktu_tayang', 
-        'id_film',
-        'id_bioskop',
-        'id_teater',
+        'film_id',
+        'bioskop_id',
+        'teater_id',
         'harga_tiket',
         'status'
     ];
+
+    public function film()
+    {
+        return $this->hasOne(Film::class);
+    }
+
+    public function bioskop()
+    {
+        return $this->hasOne(Bioskop::class);
+    }
+
+    public function teater()
+    {
+        return $this->hasOne(Teater::class);
+    }
 }

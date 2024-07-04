@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'role'      => $validatedData['role']
         ]);
 
-        $this->dispatchBrowserEvent('notify', 
+        $this->dispatch('notify', 
         [ 'type' => 'success', 'message' => 'Register User Berhasil']);
 
         return redirect('/login');

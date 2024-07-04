@@ -16,12 +16,12 @@ class CreateLaporansTable extends Migration
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_laporan');
-            $table->unsignedBigInteger('id_bioskop');
+            $table->unsignedBigInteger('bioskop_id');
             $table->integer('jml_penjualan');
             $table->integer('kursi_terjual');
             $table->double('pendapatan_rp');
 
-            $table->foreign('id_bioskop')->references('id')->on('gedung_bioskop');
+            $table->foreign('bioskop_id')->references('id')->on('gedung_bioskop');
         });
     }
 

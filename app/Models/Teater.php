@@ -23,7 +23,7 @@ class Teater extends Model
      */
     protected $fillable = [
         'nama_teater', 
-        'id_bioskop',
+        'bioskop_id',
         'list_kursi',
         'kapasitas',
         'status'

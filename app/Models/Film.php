@@ -23,6 +23,7 @@ class Film extends Model
      */
     protected $fillable = [
         'judul_film', 
+        'poster_film',
         'durasi_menit',
         'deskripsi',
         'status'

@@ -22,9 +22,9 @@ class Penjualan extends Model
      * @var array
      */
     protected $fillable = [
-        'id_user', 
-        'id_penayangan',
-        'id_bioskop',
+        'user_id', 
+        'penayangan_id',
+        'bioskop_id',
         'list_kursi',
         'total_harga'
     ];
