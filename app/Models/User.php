@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function BioskopName()
     {
-        return str_replace('admin-', '', $this->role);
+        return str_replace('Admin-', '', $this->role);
     }
 
     public function isAdminBioskop()
@@ -56,5 +56,10 @@ class User extends Authenticatable
     public function isSuperAdmin()
     {
         return $this->role == 'Admin-Super';
+    }
+
+    public function bioskop()
+    {
+        return $this->hasOne(Bioskop::class);
     }
 }

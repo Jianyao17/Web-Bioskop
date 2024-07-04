@@ -35,6 +35,8 @@ class LoginController extends Controller
                     break;
             }
         }
+
+        return redirect()->back();
     }
 
     public function logout()

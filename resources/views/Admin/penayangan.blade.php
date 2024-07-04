@@ -29,8 +29,6 @@
     </button>
 </div>
 
-<div class="w3/4 mx-auto">
-    
-</div>
+
 
 </div>

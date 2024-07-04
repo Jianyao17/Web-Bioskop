@@ -1,6 +1,6 @@
 <div>
 
-<div class="mb-3 text-3xl font-semibold">Teater</div>
+<div class="mb-3 text-3xl font-semibold">Bioskop</div>
 <p class="mb-8">Tambah, Edit, & Hapus Bioskop & Teater</p>
 
 {{-- Toolbar --}}
@@ -19,20 +19,23 @@
                     items-center ps-3 pointer-events-none ml-1"></i>
         <input class=" w-full p-2 ps-10 rounded-lg bg-neutral-700 outline-none
                       ring-2 ring-neutral-700 focus:ring-emerald-600"
-        placeholder="Search User..." required/>
+        placeholder="Search User..." wire:model="search"/>
     </div>
-    <button data-modal-target="create-modal-bioskop" data-modal-toggle="create-modal-bioskop"
-            class="w-2/12 h-full font-medium rounded-lg text-md px-3 py-2 flex justify-center
-                   items-center bg-emerald-700 hover:bg-emerald-800 focus:ring-2 drop-shadow-2xl
-                   focus:outline-none focus:ring-emerald-600 active:bg-emerald-900">
-        <i class="bi bi-building-add text-lg mr-2"></i> Tambah Bioskop
-    </button>
+    @if (Auth::user()->isSuperAdmin())
+        <button data-modal-target="create-modal-bioskop" data-modal-toggle="create-modal-bioskop"
+                class="w-2/12 h-full font-medium rounded-lg text-md px-3 py-2 flex justify-center
+                        items-center bg-emerald-700 hover:bg-emerald-800 focus:ring-2 drop-shadow-2xl
+                        focus:outline-none focus:ring-emerald-600 active:bg-emerald-900">
+            <i class="bi bi-building-add text-lg mr-2"></i> Tambah Bioskop
+        </button>
+    @endif
 </div>
 
 <hr class="h-1 my-4 bg-emerald-700 border-0 rounded-md">
 
+@if (auth()->user()->isSuperAdmin())
 <div class="w-full">
-    @foreach ($list_bioskop as $bioskop)
+    @foreach ($list_data as $bioskop)
         <div class="mb-3 w-full rounded-md">
             <div class="px-3 py-2 text-lg text-gray-200 flex flex-row
                         justify-between items-center rounded-t-md bg-emerald-600/30">
@@ -87,6 +90,32 @@
         </div>
     @endforeach
 </div>
+
+@elseif (auth()->user()->isAdminBioskop())
+<div class="w-full grid grid-cols-5 gap-2">
+    @foreach ($list_data as $teater)
+        <div class="h-28 relative border border-neutral-700 rounded-md cursor-pointer
+                    shadow-lg hover:border-gray-700 hover:bg-neutral-700/30">
+                <div class="mr-10 h-full flex flex-col justify-center items-center text-center">
+                    <div class="text-2xl font-medium">{{ $teater->nama_teater }}</div>
+                    <div class="text-lg font-normal">Kapasitas : {{ $teater->kapasitas }}</div>
+                </div>
+                <button wire:click="deleteTeater({{ $teater->id }})"
+                        data-modal-target="delete-modal-teater" data-modal-toggle="delete-modal-teater"
+                        class="absolute top-1 right-0 z-30 m-2 h-10 w-10 font-medium rounded-md bg-red-600/80
+                            border border-red-600 hover:bg-red-700 text-sm shadow-lg active:bg-red-800">
+                    <i class="bi bi-trash text-md"></i>
+                </button>
+                <button wire:click="editTeater({{ $teater->id }})"
+                        data-modal-target="update-modal-teater" data-modal-toggle="update-modal-teater"
+                        class="absolute bottom-1 right-0 z-30 m-2 h-10 w-10 font-medium rounded-md bg-neutral-700/80
+                            border border-neutral-600 hover:bg-neutral-700 text-sm shadow-lg active:bg-neutral-800">
+                    <i class="bi bi-pencil-square text-md"></i>
+                </button>
+        </div>
+    @endforeach
+</div>
+@endif
 
 <!-- Modal Create Bioskop -->
 <div id="create-modal-bioskop" tabindex="-1" aria-hidden="true" wire:ignore.self
@@ -292,11 +321,11 @@
                         <input type="text" name="nama_teater" wire:model="nama_teater"
                                 class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
                                 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-700"/>
-                            @error('nama_teater')
-                                <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
-                            @enderror
+                        @error('nama_teater')
+                            <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
+                        @enderror
                     </div>
-                    <div class="mb-7">
+                    {{-- <div class="mb-7">
                         <label class="block mb-1 text-sm font-normal text-gray-200" for="id_bioskop">ID Bioskop</label>
                         <input type="text" name="id_bioskop" wire:model="id_bioskop"
                                 class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
@@ -304,7 +333,7 @@
                         @error('id_bioskop')
                             <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-7">
                         <label class="block mb-1 text-sm font-normal text-gray-200" for="list_kursi">List Kursi</label>
                         <input type="text" name="list_kursi" wire:model="list_kursi"
@@ -377,7 +406,7 @@
                                 <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
                             @enderror
                     </div>
-                    <div class="mb-7">
+                    {{-- <div class="mb-7">
                         <label class="block mb-1 text-sm font-normal text-gray-200" for="id_bioskop">ID Bioskop</label>
                         <input type="text" name="id_bioskop" wire:model="id_bioskop"
                                 class="block w-full p-2.5 border bg-neutral-700 border-neutral-800 text-gray-200 
@@ -385,7 +414,7 @@
                         @error('id_bioskop')
                             <span class="absolute mt-1 text-xs font-medium text-red-500"> {{ $message }} </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-7">
                         <label class="block mb-1 text-sm font-normal text-gray-200" for="list_kursi">List Kursi</label>
                         <input type="text" name="list_kursi" wire:model="list_kursi"

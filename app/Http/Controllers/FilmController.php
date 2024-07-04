@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -11,7 +12,7 @@ class FilmController extends Component
 
     public function mount($nama_film)
     {
-        $this->film = $nama_film;
+        $this->film = Film::where('judul_film', $nama_film)->first();
     }
 
     public function render()

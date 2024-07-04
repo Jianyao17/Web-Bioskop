@@ -5,19 +5,16 @@
     <div class="flex flex-row">
         <div class="w-1/3 z-10">
             <img class="block w-full h-auto z-20" alt="..." 
-                 src="https://media.21cineplex.com/webcontent/gallery/pictures/171706414775783_405x594.jpg">
+                src="{{ asset('storage/'.$film->poster_film) }}">
         </div>
         <div class="w-2/3 p-8 z-10 backdrop-blur-lg flex flex-col
                     bg-gradient-to-r from-black/60 to-black/80">
-            <div class="mb-4 text-6xl font-bold text-white">{{ $film }}</div>
-            <div class="mb-1 text-2xl font-medium text-gray-200">Duration: 2h 30m</div>
+            <div class="mb-4 text-6xl font-bold text-white">{{ $film->judul_film }}</div>
+            <div class="mb-1 text-2xl font-medium text-gray-200">Duration: {{ $film->durasi_menit }}</div>
             <div class="mb-2 text-xl text-gray-200">Rating: PG-13</div>
             <div class="mt-1 min-h-48 overflow-hidden text-balance text-transparent font-medium antialiased
                         bg-clip-text bg-gradient-to-b from-gray-200 from-60% to-transparent to-100%">
-                        Gru, Lucy, Margo, Edith, dan Agnes siap menyambut anggota baru di keluarga. 
-                        Di tengah kebahagiaan, Gru harus menghadapi penjahat bernama 
-                        Maxime Le Mal yang berniat membalas dendam kepada Gru. 
-                        Apakah Gru bisa menyelamatkan keluarga kecilnya?
+                        {{ $film->deskripsi }}
             </div>
             <a class="mt-8 max-h-16 flex-grow font-semibold text-xl text-yellow-500 hover:text-white
                       text-center content-center rounded-md border-2 border-yellow-500 hover:bg-yellow-500"

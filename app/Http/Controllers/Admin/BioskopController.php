@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Bioskop;
 use App\Models\Teater;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 // Super Admin & Admin Bioskop
@@ -11,19 +12,29 @@ class BioskopController extends Component
 {
     public $nama_bioskop, $lokasi_bioskop, $bioskop_id;
     public $nama_teater, $id_bioskop, $list_kursi, $kapasitas, $teater_id;
-    public $list_bioskop;
+    public $list_data, $search;
     
 
     public function render()
     {
-        $this->list_bioskop = Bioskop::orderBy('nama_bioskop')->get();
-        
+        if (Auth::user()->isSuperAdmin())
+        {
+            $this->list_data = Bioskop::orderBy('nama_bioskop')
+            ->where('nama_bioskop', 'like', '%'.$this->search.'%')->get();
+        } 
+        else if (Auth::user()->isAdminBioskop())
+        {
+            $this->list_data = Teater::where('nama_teater', 'like', '%'.$this->search.'%')->get();
+        }
+
         return view('Admin.bioskop')
             ->extends('_Layouts.base-admin', ['page' => 'Bioskop']);
     }
 
     public function storeBioskop()
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+        
         $this->validate([
             'nama_bioskop'  => 'required|unique:gedung_bioskop,nama_bioskop',
             'lokasi_bioskop'=> 'required|string',
@@ -45,14 +56,14 @@ class BioskopController extends Component
     {
         $this->validate([
             'nama_teater'   => 'required|string|min:4',
-            'id_bioskop '   => 'required|integer',
+            'bioskop_id '   => 'required|integer',
             'list_kursi'    => 'required|json',
             'kapasitas'     => 'required|numeric',
         ]);
 
         Teater ::create([
             'nama_teater'   => $this->nama_teater,
-            'id_bioskop'    => $this->id_bioskop,
+            'bioskop_id'    => $this->id_bioskop,
             'list_kursi'    => $this->list_kursi,
             'kapasitas'     => $this->kapasitas,
         ]);
@@ -103,6 +114,8 @@ class BioskopController extends Component
 
     public function updateBioskop() 
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+        
         // Validate data to be updated
         $this->validate([ 
             'nama_bioskop'  => 'required|unique:gedung_bioskop,nama_bioskop',
@@ -127,7 +140,7 @@ class BioskopController extends Component
         // Validate data to be updated
         $this->validate([ 
             'nama_teater'   => 'required|string|min:4',
-            'id_bioskop '   => 'required|integer',
+            'bioskop_id '   => 'required|integer',
             'list_kursi'    => 'required|json',
             'kapasitas'     => 'required|numeric',
         ]);
@@ -136,7 +149,7 @@ class BioskopController extends Component
         Teater::find($this->teater_id)->update(
         [
             'nama_teater'   => $this->nama_teater,
-            'id_bioskop'    => $this->id_bioskop,
+            'bioskop_id'    => $this->id_bioskop,
             'list_kursi'    => $this->list_kursi,
             'kapasitas'     => $this->kapasitas,
         ]);
@@ -149,6 +162,8 @@ class BioskopController extends Component
 
     public function deleteBioskop($id)
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+        
         $bioskop = Bioskop::find($id);
 
         if (!$bioskop) 
@@ -185,6 +200,8 @@ class BioskopController extends Component
 
     public function delete1()
     {
+        if (!Auth::user()->isSuperAdmin()) return;
+        
         Bioskop::find($this->bioskop_id)->delete();
 
         $this->resetValue1();

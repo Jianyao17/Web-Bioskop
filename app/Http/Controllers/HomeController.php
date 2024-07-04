@@ -8,11 +8,11 @@ use Livewire\Component;
 
 class HomeController extends Component
 {
-    public $films;
+    public $films, $search;
 
     public function render()
     {
-        $this->films = Film::all();
+        $this->films = Film::where('judul_film', 'like', '%' . $this->search . '%')->get();
 
         return view('Public.home')
             ->layout('_Layouts.base', ['page' => 'Home']);

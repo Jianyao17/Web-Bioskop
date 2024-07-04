@@ -28,4 +28,9 @@ class Teater extends Model
         'kapasitas',
         'status'
     ];
+
+    public function bioskop()
+    {
+        return $this->belongsTo(Bioskop::class);
+    }
 }
